@@ -48,7 +48,8 @@ for row in cur.fetchall():
             new_articles[str(row[2])] = {'title': row[3], 'user': row[0]}
 
 
-# print edited_articles, new_articles
+def containsnonasciicharacters(str):
+    return not all(ord(c) < 128 for c in str)   
 
 
 def generate_last_article(articles):
@@ -174,7 +175,11 @@ html = """\
  
 # Record the MIME types of both parts - text/plain and text/html.
 #part1 = MIMEText(text, 'plain')
-part2 = MIMEText(html, 'html')
+if containsnonasciicharacters(html):
+    part2 = MIMEText(html, 'html', 'utf-8')
+else:
+    part2 = MIMEText(html, 'html')  
+#part2 = MIMEText(html, 'html')
  
 # Attach parts into message container.
 # According to RFC 2046, the last part of a multipart message, in this case

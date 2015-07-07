@@ -1,6 +1,6 @@
 # MWRecentActivityNotifier
 
-This simple-project sends according your settings a report of recent acitities from your Wiki (MediaWiki).
+This simple-project sends according your settings a report of recent activities from your Wiki (MediaWiki).
 
 ### Clone this repo
 ```
